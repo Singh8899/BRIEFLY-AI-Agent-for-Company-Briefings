@@ -3,11 +3,24 @@
 from typing import List, Optional
 from pydantic import BaseModel
 
+class InternalProduct(BaseModel):
+    name: str
+    description: Optional[str] = None
+    category: Optional[str] = None  # e.g., "Software", "Consulting", "Hardware"
+    launch_year: Optional[int] = None
+    revenue_contribution: Optional[str] = None  # e.g., "$10M annually", "20% of total revenue"
+
+class InternalPartnership(BaseModel):
+    partner_name: str
+    relationship_type: Optional[str] = None  # e.g., "Strategic Alliance", "Vendor", "Channel Partner"
+    start_year: Optional[int] = None
+    details: Optional[str] = None  # free text for extra details
 
 class InternalInfo(BaseModel):
     industry: str
-    products: List[str]
+    products: List[InternalProduct]
     risk_category: Optional[str] = None
+    partnerships: Optional[List[InternalPartnership]] = None
     notes: Optional[str] = None  # free text for extra details
     methodologies: Optional[List[str]] = None  # internal frameworks/best practices
     kpis: Optional[List[str]] = None  # key performance indicators
@@ -15,10 +28,21 @@ class InternalInfo(BaseModel):
     financial_estimates: Optional[str] = None  # revenue estimates, forecasts
     expertise_areas: Optional[List[str]] = None  # internal knowledge domains
 
+class ExternalProduct(BaseModel):
+    name: str
+    description: Optional[str] = None
+    category: Optional[str] = None  # e.g., "Software", "Consulting", "Hardware"
+    launch_year: Optional[int] = None
+
+class ExternalPartnership(BaseModel):
+    partner_name: str
+    relationship_type: Optional[str] = None  # e.g., "Strategic Alliance", "Vendor", "Channel Partner"
+    start_year: Optional[int] = None
+    details: Optional[str] = None  # free text for extra details
 
 class ExternalInfo(BaseModel):
-    public_products: List[str]
-    partnerships: Optional[List[str]] = None
+    public_products: List[ExternalProduct]
+    partnerships: Optional[List[ExternalPartnership]] = None
     website: Optional[str] = None
     description: Optional[str] = None
     recent_news: Optional[List[str]] = None  # recent developments
@@ -36,45 +60,48 @@ class CompanyProfiles(BaseModel):
     companies: List[CompanyProfile]
 
 
-
 def get_system_prompt_data(num_companies: int) -> str:
     return f"""
         You are an expert data generator creating synthetic company profile data for a consulting/business intelligence context.
-        You are to generate {num_companies} distinct company profiles with comprehensive internal and external intelligence.
-        Your task is to generate realistic structured company data following the CompanyProfile schema.
+        Generate {num_companies} distinct, realistic company profiles with comprehensive internal and external intelligence.
+        
+        CRITICAL: Return valid JSON that strictly follows the CompanyProfiles schema with a "companies" array.
 
-        For each company, generate data across both INTERNAL (proprietary) and EXTERNAL (publicly available) categories:
+        DETAILED FIELD REQUIREMENTS:
+    
+        COMPANY NAME: Generate realistic company names appropriate for each industry. MUST BE A SINGLE WORD
 
-        NAME: The official/legal company name. Should be realistic and industry-appropriate.
+        INTERNAL INFO (Proprietary consulting data):
+        - industry: Specific sectors like "Financial Services", "Healthcare Technology", "Advanced Manufacturing", "Renewable Energy", "E-commerce Platform"
+        - products: 3-8 internal products with technical names, detailed descriptions, categories ("Software", "Consulting", "Hardware", "Service"), launch years (2015-2024), revenue contributions ("$5M annually", "15% of revenue")
+        - risk_category: Balanced distribution across "Low", "Medium", "High", "Critical"
+        - partnerships: 1-4 internal partnerships with technical relationship types, start years, operational details
+        - notes: Insider observations about compliance, leadership, strategy, operational challenges (100-200 words)
+        - methodologies: 2-5 internal frameworks like "Agile", "Six Sigma", "Design Thinking", "DevOps", "Lean Manufacturing"
+        - kpis: 3-6 specific metrics with values like "Customer Retention 87%", "Market Share 12%", "EBITDA 18%"
+        - client_profiles: 2-4 segments like "Mid-market B2B", "Enterprise Fortune 500", "Government contracts"
+        - financial_estimates: Specific revenue data from engagements like "$50M ARR", "25% YoY growth"
+        - expertise_areas: 3-6 domains like "Cloud Migration", "Digital Transformation", "Supply Chain Optimization"
 
-        INTERNAL INFO (proprietary consulting knowledge):
-        - industry: Specific industry sector (e.g., "Financial Services", "Healthcare Technology", "Manufacturing", "Retail", "Energy")
-        - products: Detailed list of 5-10 actual products/services offered (technical names, internal project codes)
-        - risk_category: Risk assessment ("Low", "Medium", "High", "Critical") based on financial stability, market position
-        - notes: Internal observations (compliance issues, strategic challenges, leadership changes, operational concerns)
-        - methodologies: Internal frameworks used (e.g., "Agile Development", "Six Sigma", "Design Thinking", "Lean Manufacturing")
-        - kpis: Key performance metrics (e.g., "Customer Retention 85%", "Market Share 12%", "EBITDA Margin 15%")
-        - client_profiles: Organizational insights (e.g., "Mid-market B2B", "Enterprise Fortune 500", "Government contractor")
-        - financial_estimates: Revenue/growth estimates from past engagements (e.g., "$50M ARR", "20% YoY growth projected")
-        - expertise_areas: Internal knowledge domains (e.g., "Cloud Migration", "Digital Transformation", "Supply Chain Optimization")
-
-        EXTERNAL INFO (publicly available intelligence):
-        - public_products: 1-5 marketing-friendly product descriptions (consumer-facing names)
-        - partnerships: Strategic alliances, vendor relationships, channel partners
-        - website: Realistic company website URL
-        - description: Public company tagline/mission statement
-        - recent_news: Recent developments (product launches, acquisitions, expansions, crises)
-        - market_position: Competitive standing (e.g., "Market Leader", "Challenger", "Niche Player", "Startup")
-        - regulatory_status: Compliance certifications, licenses (e.g., "ISO 27001", "SOC 2", "GDPR Compliant")
-        - social_sentiment: Brand reputation indicator (e.g., "Positive", "Mixed", "Negative", "Neutral")
+        EXTERNAL INFO (Publicly available data):
+        - public_products: 1-4 consumer-facing products with marketing names and descriptions
+        - partnerships: 1-3 public partnerships with marketing-friendly descriptions
+        - website: Realistic URLs matching company names
+        - description: Professional taglines/mission statements (50-100 words)
+        - recent_news: 2-4 realistic developments (product launches, acquisitions, expansions, challenges)
+        - market_position: Distribute across "Market Leader", "Challenger", "Niche Player", "Startup"
+        - regulatory_status: Relevant certifications like "ISO 27001", "SOC 2", "GDPR Compliant", "FDA Approved"
+        - social_sentiment: Mix of "Positive", "Mixed", "Negative", "Neutral" based on realistic scenarios
 
         GENERATION GUIDELINES:
-        - Create realistic differences between internal (detailed/technical) vs external (polished/marketing) data
-        - Include diverse industries: tech, finance, healthcare, manufacturing, retail, energy, consulting
-        - Vary company sizes: startups, mid-market, enterprise, multinational corporations
-        - Mix risk categories and optional fields for realistic diversity
-        - Make internal data more granular and technical than external data
-        - Ensure consistency between related fields (industry should align with products/expertise)
+        - Create clear distinctions between internal (technical/detailed) vs external (polished/marketing) data
+        - Ensure industry diversity: technology, finance, healthcare, manufacturing, retail, energy, consulting, aerospace
+        - Vary company sizes and maturity levels realistically
+        - Make optional fields realistically sparse (not every company has all fields)
+        - Ensure internal products are more technical than external products
+        - Align all company data for consistency (industry should match products, expertise, partnerships)
+        - Use realistic years, metrics, and financial figures
+        - Create believable company narratives across all fields
 
-        Return the data as valid JSON following the CompanyProfiles schema structure with all companies in a "companies" array.
+        OUTPUT FORMAT: Return only valid JSON with no additional text, comments, or markdown formatting.
     """

@@ -1,0 +1,74 @@
+{# =========================
+   Company Briefing Template
+   Expects a dict shaped like the Pydantic models:
+   Content {
+     company: { name, industry?, headquarters?, founded?, ceo? },
+     overview?, history?,
+     products: [{ name, description? }] (optional/empty),
+     partnerships: [{ title?, summary?, source? }] (optional/empty),
+     financials: { revenue?, market_cap?, employees? } (optional),
+     risks: [str] (optional/empty),
+     citations: [{ title, url }] (optional/empty),
+     metadata: { generated_at?, language? }
+   }
+   ========================= #}
+
+# Company Briefing: {{ company.name or "Unknown Company" }}
+
+**Industry:** {{ company.industry or "N/A" }}  
+**Headquarters:** {{ company.headquarters or "N/A" }}  
+{% if company.founded %}**Founded:** {{ company.founded }}{% endif %}{% if company.founded and company.ceo %} · {% endif %}{% if company.ceo %}**CEO:** {{ company.ceo }}{% endif %}  
+**Language:** {{ metadata.language or "N/A" }}  
+**Generated At:** {{ metadata.generated_at or "N/A" }}
+
+---
+
+## Overview
+{{ overview or "No overview available." }}
+
+{% if history %}
+## History
+{{ history }}
+{% endif %}
+
+## Key Products & Services
+{% if products and products|length > 0 %}
+{% for p in products %}
+- **{{ p.name or "Unnamed Product" }}** — {{ p.description or "No description available." }}
+{% endfor %}
+{% else %}
+- No product information available.
+{% endif %}
+
+## Partnerships & Recent News
+{% if partnerships and partnerships|length > 0 %}
+{% for part in partnerships %}
+- {% if part.title %}**{{ part.title }}**{% else %}**Update**{% endif %} — {{ part.summary or "No details available." }}
+  _Source: {{ part.source or "Unknown" }}_
+{% endfor %}
+{% else %}
+- No partnerships or news found.
+{% endif %}
+
+## Financial Snapshot
+- **Revenue:** {{ (financials and financials.revenue) or "N/A" }}
+- **Market Cap:** {{ (financials and financials.market_cap) or "N/A" }}
+- **Employees:** {{ (financials and financials.employees) or "N/A" }}
+
+## Risks & Sensitivities
+{% if risks and risks|length > 0 %}
+{% for r in risks %}
+- {{ r }}
+{% endfor %}
+{% else %}
+- None identified.
+{% endif %}
+
+## Sources
+{% if citations and citations|length > 0 %}
+{% for c in citations %}
+- {% if c.url %}[{{ c.title or "Source" }}]({{ c.url }}){% else %}{{ c.title or "Source" }}{% endif %}
+{% endfor %}
+{% else %}
+- No sources cited.
+{% endif %}

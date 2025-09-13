@@ -1,515 +1,642 @@
 {
-  "companies": [
-    {
-      "name": "TechSolutions Inc.",
-      "internal": {
-        "industry": "Technology",
-        "products": [
-          "CloudOptiX",
-          "DataSync Pro",
-          "SecureNet Solutions",
-          "AI Insight Analytics",
-          "AgileProject Suite"
-        ],
-        "risk_category": "Medium",
-        "notes": "Facing competition in cloud services, need to enhance AI product offerings.",
-        "methodologies": [
-          "Agile Development",
-          "Scrum",
-          "Design Thinking"
-        ],
-        "kpis": [
-          "Customer Retention 82%",
-          "Market Share 15%",
-          "EBITDA Margin 18%"
-        ],
-        "client_profiles": [
-          "Mid-market B2B",
-          "Enterprise Clients"
-        ],
-        "financial_estimates": "$30M ARR, 15% YoY growth projected",
-        "expertise_areas": [
-          "Cloud Computing",
-          "Data Analytics",
-          "Cybersecurity"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "CloudOptiX - The Future of Cloud Solutions",
-          "DataSync Pro - Seamless Data Integration",
-          "AI Insight Analytics - Unlocking Business Intelligence"
-        ],
-        "partnerships": [
-          "Microsoft Azure",
-          "Amazon Web Services",
-          "IBM"
-        ],
-        "website": "www.techsolutions.com",
-        "description": "Innovative technology solutions for a connected world.",
-        "recent_news": [
-          "Launched CloudOptiX with advanced features.",
-          "Acquired AI Insight Analytics for enhanced capabilities."
-        ],
-        "market_position": "Challenger",
-        "regulatory_status": [
-          "ISO 27001",
-          "GDPR Compliant"
-        ],
-        "social_sentiment": "Positive"
-      }
+  "Nexium": {
+    "internal": {
+      "industry": "Healthcare Technology",
+      "products": [
+        {
+          "name": "MediSync",
+          "description": "A cloud-based patient management system designed to enhance communication between patients and healthcare providers.",
+          "category": "Software",
+          "launch_year": 2021,
+          "revenue_contribution": "$10M annually"
+        },
+        {
+          "name": "HealthAnalyzer",
+          "description": "Advanced analytics tool for monitoring patient outcomes and operational efficiencies.",
+          "category": "Software",
+          "launch_year": 2023,
+          "revenue_contribution": "$5M annually"
+        }
+      ],
+      "risk_category": "Medium",
+      "partnerships": [
+        {
+          "partner_name": "HealthCorp",
+          "relationship_type": "Technology Integration",
+          "start_year": 2020,
+          "details": "Collaborating on interoperability solutions for electronic health records."
+        }
+      ],
+      "notes": "Nexium has faced challenges with HIPAA compliance but has improved its processes. Leadership is focused on expanding its service offerings in telehealth. The company's strategy emphasizes strategic partnerships to enhance market positioning.",
+      "methodologies": [
+        "Agile",
+        "Lean Manufacturing"
+      ],
+      "kpis": [
+        "Customer Retention 92%",
+        "Market Share 15%",
+        "EBITDA 20%"
+      ],
+      "client_profiles": [
+        "Mid-market B2B",
+        "Government contracts"
+      ],
+      "financial_estimates": "$30M ARR",
+      "expertise_areas": [
+        "Cloud Migration",
+        "Data Security"
+      ]
     },
-    {
-      "name": "HealthPlus Technologies",
-      "internal": {
-        "industry": "Healthcare Technology",
-        "products": [
-          "PatientCare 360",
-          "MedTrack Analytics",
-          "TeleHealth Connect",
-          "EHR Optimizer",
-          "HealthData Vault"
-        ],
-        "risk_category": "High",
-        "notes": "Regulatory changes impacting product timelines.",
-        "methodologies": [
-          "Lean Methodology",
-          "Design Thinking"
-        ],
-        "kpis": [
-          "Customer Retention 75%",
-          "Market Share 10%",
-          "EBITDA Margin 12%"
-        ],
-        "client_profiles": [
-          "Healthcare Providers",
-          "Insurance Companies"
-        ],
-        "financial_estimates": "$45M ARR, 10% YoY growth projected",
-        "expertise_areas": [
-          "Health IT",
-          "Data Security",
-          "Regulatory Compliance"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "PatientCare 360 - Holistic Patient Management",
-          "TeleHealth Connect - Virtual Care Simplified"
-        ],
-        "partnerships": [
-          "Epic Systems",
-          "Cerner",
-          "NVIDIA Healthcare"
-        ],
-        "website": "www.healthplustech.com",
-        "description": "Transforming healthcare through technology.",
-        "recent_news": [
-          "Announced partnership with Epic Systems.",
-          "TeleHealth Connect sees record usage during pandemic."
-        ],
-        "market_position": "Market Leader",
-        "regulatory_status": [
-          "HIPAA Compliant",
-          "ISO 9001"
-        ],
-        "social_sentiment": "Mixed"
-      }
-    },
-    {
-      "name": "GreenEnergy Solutions",
-      "internal": {
-        "industry": "Energy",
-        "products": [
-          "SolarSmart Panels",
-          "EcoWind Turbines",
-          "EnergyStore Batteries",
-          "SmartGrid Manager",
-          "CarbonTrack Software"
-        ],
-        "risk_category": "Medium",
-        "notes": "Need to improve supply chain for solar panel production.",
-        "methodologies": [
-          "Six Sigma",
-          "Lean Manufacturing"
-        ],
-        "kpis": [
-          "Customer Retention 85%",
-          "Market Share 20%",
-          "EBITDA Margin 25%"
-        ],
-        "client_profiles": [
-          "Commercial Real Estate",
-          "Government Contracts"
-        ],
-        "financial_estimates": "$100M ARR, 18% YoY growth projected",
-        "expertise_areas": [
-          "Renewable Energy",
-          "Sustainable Development",
-          "Energy Efficiency"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "SolarSmart Panels - Harness the Sun",
-          "EcoWind Turbines - Clean Energy Revolution"
-        ],
-        "partnerships": [
-          "Siemens",
-          "Tesla Energy",
-          "UN Global Compact"
-        ],
-        "website": "www.greenenergysolutions.com",
-        "description": "Leading the charge in renewable energy innovation.",
-        "recent_news": [
-          "Expanded solar panel production capacity.",
-          "Won government contract for energy efficiency project."
-        ],
-        "market_position": "Market Leader",
-        "regulatory_status": [
-          "ISO 14001",
-          "LEED Certified"
-        ],
-        "social_sentiment": "Positive"
-      }
-    },
-    {
-      "name": "Retail Innovators LLC",
-      "internal": {
-        "industry": "Retail",
-        "products": [
-          "ShopSmart App",
-          "InventorySync",
-          "CustomerInsight Analytics",
-          "LoyaltyPlus Program",
-          "RetailVR Experience"
-        ],
-        "risk_category": "Medium",
-        "notes": "Challenges with app adoption rates; needs better marketing.",
-        "methodologies": [
-          "Agile Development",
-          "Customer Journey Mapping"
-        ],
-        "kpis": [
-          "Customer Retention 78%",
-          "Market Share 8%",
-          "EBITDA Margin 15%"
-        ],
-        "client_profiles": [
-          "Small to Mid-sized Retailers",
-          "E-commerce Platforms"
-        ],
-        "financial_estimates": "$20M ARR, 25% YoY growth projected",
-        "expertise_areas": [
-          "Retail Technology",
-          "Customer Engagement",
-          "Supply Chain Optimization"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "ShopSmart App - Revolutionize Shopping",
-          "CustomerInsight Analytics - Know Your Shoppers"
-        ],
-        "partnerships": [
-          "Shopify",
-          "Square",
-          "PayPal"
-        ],
-        "website": "www.retailinnovators.com",
-        "description": "Driving retail success through innovative technology.",
-        "recent_news": [
-          "Launched new version of ShopSmart with enhanced features.",
-          "Partnership with Shopify to improve e-commerce offerings."
-        ],
-        "market_position": "Niche Player",
-        "regulatory_status": [
-          "PCI DSS Compliant"
-        ],
-        "social_sentiment": "Neutral"
-      }
-    },
-    {
-      "name": "FinanceWise Consulting",
-      "internal": {
-        "industry": "Consulting",
-        "products": [
-          "Risk Assessment Toolkit",
-          "Financial Forecast Model",
-          "Strategic Planning Workshop",
-          "Market Analysis Report",
-          "Compliance Check Software"
-        ],
-        "risk_category": "Low",
-        "notes": "Strong client relationships; potential for international expansion.",
-        "methodologies": [
-          "SWOT Analysis",
-          "Scenario Planning"
-        ],
-        "kpis": [
-          "Customer Retention 90%",
-          "Market Share 5%",
-          "EBITDA Margin 20%"
-        ],
-        "client_profiles": [
-          "Large Enterprises",
-          "Financial Institutions"
-        ],
-        "financial_estimates": "$15M ARR, 12% YoY growth projected",
-        "expertise_areas": [
-          "Financial Risk Management",
-          "Regulatory Compliance",
-          "Market Strategy"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "Risk Assessment Toolkit - Navigate Uncertainty",
-          "Financial Forecast Model - Plan for Success"
-        ],
-        "partnerships": [
-          "Big Four Accounting Firms",
-          "Financial Industry Regulatory Authority"
-        ],
-        "website": "www.financewiseconsulting.com",
-        "description": "Empowering businesses to make informed financial decisions.",
-        "recent_news": [
-          "Expanded services to include international consulting.",
-          "Launched new financial forecasting model."
-        ],
-        "market_position": "Market Leader",
-        "regulatory_status": [
-          "ISO 9001",
-          "FINRA Registered"
-        ],
-        "social_sentiment": "Positive"
-      }
-    },
-    {
-      "name": "ManufactureRight Corp.",
-      "internal": {
-        "industry": "Manufacturing",
-        "products": [
-          "SmartAssembly Line",
-          "QualityControl 4.0",
-          "Predictive Maintenance Tool",
-          "SupplyChain Manager",
-          "Factory Automation Suite"
-        ],
-        "risk_category": "Critical",
-        "notes": "Supply chain disruptions; exploring alternative suppliers.",
-        "methodologies": [
-          "Lean Manufacturing",
-          "Just-in-Time Production"
-        ],
-        "kpis": [
-          "Customer Retention 70%",
-          "Market Share 15%",
-          "EBITDA Margin 10%"
-        ],
-        "client_profiles": [
-          "Automotive Manufacturers",
-          "Aerospace Industries"
-        ],
-        "financial_estimates": "$60M ARR, 5% YoY growth projected",
-        "expertise_areas": [
-          "Manufacturing Optimization",
-          "Process Improvement",
-          "Supply Chain Management"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "SmartAssembly Line - Revolutionizing Production",
-          "QualityControl 4.0 - Ensure Excellence"
-        ],
-        "partnerships": [
-          "ABB Robotics",
-          "Siemens Industry",
-          "SAP"
-        ],
-        "website": "www.manufactureright.com",
-        "description": "Innovating manufacturing for a smarter future.",
-        "recent_news": [
-          "Launched SmartAssembly Line technology.",
-          "Partnered with ABB Robotics for automation solutions."
-        ],
-        "market_position": "Challenger",
-        "regulatory_status": [
-          "ISO 9001",
-          "OSHA Compliant"
-        ],
-        "social_sentiment": "Mixed"
-      }
-    },
-    {
-      "name": "LogiTech Systems",
-      "internal": {
-        "industry": "Logistics",
-        "products": [
-          "LogiTrack Software",
-          "FleetManager Pro",
-          "InventoryOptimizer",
-          "OrderFulfillment Suite",
-          "RoutePlanner Tool"
-        ],
-        "risk_category": "Medium",
-        "notes": "Market competition increasing; need for innovation in offerings.",
-        "methodologies": [
-          "Agile Development",
-          "Lean Six Sigma"
-        ],
-        "kpis": [
-          "Customer Retention 88%",
-          "Market Share 12%",
-          "EBITDA Margin 14%"
-        ],
-        "client_profiles": [
-          "E-commerce Companies",
-          "Retail Distributors"
-        ],
-        "financial_estimates": "$25M ARR, 20% YoY growth projected",
-        "expertise_areas": [
-          "Logistics Management",
-          "Supply Chain Solutions",
-          "Data Analytics"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "LogiTrack Software - The Future of Logistics",
-          "FleetManager Pro - Optimize Your Fleet"
-        ],
-        "partnerships": [
-          "FedEx",
-          "UPS",
-          "DHL"
-        ],
-        "website": "www.logitechsystems.com",
-        "description": "Streamlining logistics for a connected world.",
-        "recent_news": [
-          "Expanded service offerings to include new analytics tools.",
-          "Partnership with FedEx for enhanced delivery solutions."
-        ],
-        "market_position": "Niche Player",
-        "regulatory_status": [
-          "ISO 28000"
-        ],
-        "social_sentiment": "Positive"
-      }
-    },
-    {
-      "name": "FinTech Innovations",
-      "internal": {
-        "industry": "Financial Services",
-        "products": [
-          "CryptoWallet Secure",
-          "LendingPlatform Pro",
-          "WealthManagement Dashboard",
-          "RiskAssessment Suite",
-          "PaymentProcessing System"
-        ],
-        "risk_category": "High",
-        "notes": "Navigating regulatory challenges in cryptocurrency.",
-        "methodologies": [
-          "Agile Development",
-          "Lean Startup"
-        ],
-        "kpis": [
-          "Customer Retention 72%",
-          "Market Share 11%",
-          "EBITDA Margin 15%"
-        ],
-        "client_profiles": [
-          "Startups",
-          "SMEs in Financial Sector"
-        ],
-        "financial_estimates": "$40M ARR, 25% YoY growth projected",
-        "expertise_areas": [
-          "Blockchain Technology",
-          "Digital Payments",
-          "Risk Management"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "CryptoWallet Secure - Safeguard Your Assets",
-          "LendingPlatform Pro - Simplified Lending"
-        ],
-        "partnerships": [
-          "Stripe",
-          "PayPal",
-          "Coinbase"
-        ],
-        "website": "www.fintechinnovations.com",
-        "description": "Innovating financial services for a digital age.",
-        "recent_news": [
-          "Launched new CryptoWallet with enhanced security features.",
-          "Acquired LendingPlatform technology."
-        ],
-        "market_position": "Challenger",
-        "regulatory_status": [
-          "PCI DSS Compliant",
-          "FINRA Registered"
-        ],
-        "social_sentiment": "Mixed"
-      }
-    },
-    {
-      "name": "EduTech Leaders",
-      "internal": {
-        "industry": "Education Technology",
-        "products": [
-          "LearningManagement System",
-          "StudentEngagement App",
-          "CourseBuilder Tool",
-          "Assessment Analytics",
-          "ContentCreation Platform"
-        ],
-        "risk_category": "Medium",
-        "notes": "High competition; need to differentiate product offerings.",
-        "methodologies": [
-          "Design Thinking",
-          "Agile Development"
-        ],
-        "kpis": [
-          "Customer Retention 80%",
-          "Market Share 9%",
-          "EBITDA Margin 13%"
-        ],
-        "client_profiles": [
-          "Educational Institutions",
-          "Corporate Training Providers"
-        ],
-        "financial_estimates": "$35M ARR, 15% YoY growth projected",
-        "expertise_areas": [
-          "E-Learning Solutions",
-          "Content Development",
-          "Assessment Design"
-        ]
-      },
-      "external": {
-        "public_products": [
-          "LearningManagement System - Empower Learning",
-          "StudentEngagement App - Connect and Collaborate"
-        ],
-        "partnerships": [
-          "Coursera",
-          "Udemy",
-          "Blackboard"
-        ],
-        "website": "www.edutechleaders.com",
-        "description": "Transforming education through technology.",
-        "recent_news": [
-          "Launched new LearningManagement System with interactive features.",
-          "Partnered with Coursera for course offerings."
-        ],
-        "market_position": "Market Leader",
-        "regulatory_status": [
-          "GDPR Compliant"
-        ],
-        "social_sentiment": "Positive"
-      }
+    "external": {
+      "public_products": [
+        {
+          "name": "CareConnect",
+          "description": "An intuitive mobile app for patients to book appointments and access medical records.",
+          "category": "App",
+          "launch_year": 2022
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "MedTech Solutions",
+          "relationship_type": "Strategic Alliance",
+          "start_year": 2021,
+          "details": "Joint marketing initiatives to promote integrated health solutions."
+        }
+      ],
+      "website": "www.nexiumhealth.com",
+      "description": "Nexium is dedicated to revolutionizing healthcare through innovative technology solutions that enhance patient care and operational efficiency.",
+      "recent_news": [
+        "Launched CareConnect app to enhance patient engagement.",
+        "Secured $10M in Series A funding for expansion.",
+        "Entered partnership with HealthCorp to improve EHR interoperability."
+      ],
+      "market_position": "Challenger",
+      "regulatory_status": [
+        "ISO 27001",
+        "HIPAA Compliant"
+      ],
+      "social_sentiment": "Positive"
     }
-  ]
+  },
+  "Energix": {
+    "internal": {
+      "industry": "Renewable Energy",
+      "products": [
+        {
+          "name": "SolarArray",
+          "description": "A modular solar energy system designed for residential and commercial use.",
+          "category": "Hardware",
+          "launch_year": 2020,
+          "revenue_contribution": "$8M annually"
+        },
+        {
+          "name": "EnergyOptimizer",
+          "description": "AI-powered software for monitoring and optimizing energy consumption.",
+          "category": "Software",
+          "launch_year": 2023,
+          "revenue_contribution": "$6M annually"
+        }
+      ],
+      "risk_category": "Low",
+      "partnerships": [
+        {
+          "partner_name": "EcoBuild",
+          "relationship_type": "Joint Venture",
+          "start_year": 2021,
+          "details": "Co-developing sustainable energy solutions for urban developments."
+        }
+      ],
+      "notes": "Energix is positioned well in the market but must navigate supply chain disruptions. The focus on innovation and sustainability is critical to its growth strategy.",
+      "methodologies": [
+        "Lean Manufacturing",
+        "Six Sigma"
+      ],
+      "kpis": [
+        "Customer Retention 85%",
+        "Market Share 10%",
+        "EBITDA 25%"
+      ],
+      "client_profiles": [
+        "Enterprise Fortune 500",
+        "Government contracts"
+      ],
+      "financial_estimates": "$45M ARR",
+      "expertise_areas": [
+        "Sustainable Energy",
+        "Smart Grids"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "EcoPower",
+          "description": "A subscription service for consumers to purchase renewable energy credits.",
+          "category": "Service",
+          "launch_year": 2022
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "GreenTech",
+          "relationship_type": "Collaboration",
+          "start_year": 2023,
+          "details": "Partnering on community renewable energy projects."
+        }
+      ],
+      "website": "www.energix.com",
+      "description": "Energix is committed to providing innovative renewable energy solutions that drive sustainability and efficiency.",
+      "recent_news": [
+        "Expanded production capacity for SolarArray to meet rising demand.",
+        "Secured partnership with EcoBuild for green urban projects.",
+        "Recognized as a leader in renewable energy by Green Awards 2023."
+      ],
+      "market_position": "Market Leader",
+      "regulatory_status": [
+        "ISO 14001",
+        "LEED Certified"
+      ],
+      "social_sentiment": "Positive"
+    }
+  },
+  "Finantech": {
+    "internal": {
+      "industry": "Financial Services",
+      "products": [
+        {
+          "name": "FinSmart",
+          "description": "An AI-driven financial advisory platform tailored for individual investors.",
+          "category": "Software",
+          "launch_year": 2021,
+          "revenue_contribution": "$12M annually"
+        },
+        {
+          "name": "WealthMax",
+          "description": "A wealth management service aimed at high-net-worth individuals.",
+          "category": "Service",
+          "launch_year": 2023,
+          "revenue_contribution": "$9M annually"
+        }
+      ],
+      "risk_category": "High",
+      "partnerships": [
+        {
+          "partner_name": "InvestSafe",
+          "relationship_type": "Compliance Consultancy",
+          "start_year": 2020,
+          "details": "Assisting in navigating complex regulatory frameworks."
+        }
+      ],
+      "notes": "Finantech faces intense competition and regulatory scrutiny. The focus on compliance and innovative service offerings is vital for maintaining market share.",
+      "methodologies": [
+        "Agile",
+        "DevOps"
+      ],
+      "kpis": [
+        "Customer Retention 90%",
+        "Market Share 8%",
+        "EBITDA 15%"
+      ],
+      "client_profiles": [
+        "Enterprise Fortune 500",
+        "Mid-market B2B"
+      ],
+      "financial_estimates": "$70M ARR",
+      "expertise_areas": [
+        "Investment Analysis",
+        "Risk Management"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "FinTrack",
+          "description": "A mobile app that offers real-time tracking of investments.",
+          "category": "App",
+          "launch_year": 2022
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "CapitalGroup",
+          "relationship_type": "Strategic Partnership",
+          "start_year": 2021,
+          "details": "Collaborating to offer exclusive investment opportunities."
+        }
+      ],
+      "website": "www.finantech.com",
+      "description": "Finantech empowers individuals to achieve financial success through innovative technology and expert guidance.",
+      "recent_news": [
+        "Launched FinTrack for enhanced investment monitoring.",
+        "Secured strategic partnership with CapitalGroup.",
+        "Expanded WealthMax to include personalized financial planning."
+      ],
+      "market_position": "Challenger",
+      "regulatory_status": [
+        "SOC 2",
+        "FINRA Compliant"
+      ],
+      "social_sentiment": "Mixed"
+    }
+  },
+  "Optima": {
+    "internal": {
+      "industry": "Advanced Manufacturing",
+      "products": [
+        {
+          "name": "OptiFlow",
+          "description": "A manufacturing execution system that improves production efficiency.",
+          "category": "Software",
+          "launch_year": 2018,
+          "revenue_contribution": "$15M annually"
+        },
+        {
+          "name": "AutoMatic",
+          "description": "Automated quality control systems leveraging machine learning.",
+          "category": "Hardware",
+          "launch_year": 2022,
+          "revenue_contribution": "$5M annually"
+        }
+      ],
+      "risk_category": "Critical",
+      "partnerships": [
+        {
+          "partner_name": "SmartMachinery",
+          "relationship_type": "Technology Collaboration",
+          "start_year": 2021,
+          "details": "Integrating AI-driven solutions into manufacturing processes."
+        }
+      ],
+      "notes": "Optima is currently facing challenges in supply chain logistics. The leadership is focused on innovation to drive growth while ensuring compliance with manufacturing regulations.",
+      "methodologies": [
+        "Lean Manufacturing",
+        "Six Sigma"
+      ],
+      "kpis": [
+        "Customer Retention 87%",
+        "Market Share 12%",
+        "EBITDA 18%"
+      ],
+      "client_profiles": [
+        "Mid-market B2B",
+        "Enterprise Fortune 500"
+      ],
+      "financial_estimates": "$60M ARR",
+      "expertise_areas": [
+        "Process Optimization",
+        "AI Integration"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "SmartFactory",
+          "description": "A platform for real-time monitoring of manufacturing processes.",
+          "category": "Service",
+          "launch_year": 2023
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "TechInnovators",
+          "relationship_type": "Research Partnership",
+          "start_year": 2022,
+          "details": "Developing next-gen manufacturing technologies."
+        }
+      ],
+      "website": "www.optima.com",
+      "description": "Optima is at the forefront of manufacturing technology, providing innovative solutions that optimize efficiency and quality.",
+      "recent_news": [
+        "Launched SmartFactory platform for enhanced monitoring.",
+        "Secured partnership with SmartMachinery to improve quality control.",
+        "Recognized for excellence in manufacturing at the Global Tech Awards."
+      ],
+      "market_position": "Market Leader",
+      "regulatory_status": [
+        "ISO 9001",
+        "CMMI Level 3"
+      ],
+      "social_sentiment": "Positive"
+    }
+  },
+  "Retailera": {
+    "internal": {
+      "industry": "E-commerce Platform",
+      "products": [
+        {
+          "name": "RetailX",
+          "description": "An omnichannel e-commerce platform integrating in-store and online shopping experiences.",
+          "category": "Software",
+          "launch_year": 2019,
+          "revenue_contribution": "$20M annually"
+        },
+        {
+          "name": "OrderTrack",
+          "description": "A logistics management tool for optimizing delivery processes.",
+          "category": "Software",
+          "launch_year": 2021,
+          "revenue_contribution": "$10M annually"
+        }
+      ],
+      "risk_category": "Medium",
+      "partnerships": [
+        {
+          "partner_name": "LogiTech",
+          "relationship_type": "Operational Partnership",
+          "start_year": 2020,
+          "details": "Enhancing supply chain logistics for e-commerce deliveries."
+        }
+      ],
+      "notes": "Retailera's competitive edge lies in its seamless user experience and integrated logistics. The company is focusing on expanding into new markets to boost growth.",
+      "methodologies": [
+        "Agile",
+        "Lean Startup"
+      ],
+      "kpis": [
+        "Customer Retention 80%",
+        "Market Share 15%",
+        "EBITDA 22%"
+      ],
+      "client_profiles": [
+        "Small to Medium Enterprises",
+        "B2C E-commerce"
+      ],
+      "financial_estimates": "$40M ARR",
+      "expertise_areas": [
+        "E-commerce Strategy",
+        "Supply Chain Management"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "ShopSmart",
+          "description": "A customer-friendly app that enhances the online shopping experience.",
+          "category": "App",
+          "launch_year": 2022
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "MarketMakers",
+          "relationship_type": "Marketing Alliance",
+          "start_year": 2023,
+          "details": "Collaborating on digital marketing campaigns."
+        }
+      ],
+      "website": "www.retailera.com",
+      "description": "Retailera is transforming the retail landscape with cutting-edge e-commerce solutions designed for businesses of all sizes.",
+      "recent_news": [
+        "Launched ShopSmart app for improved shopping experience.",
+        "Expanded partnerships with local businesses for delivery.",
+        "Recognized for innovation in e-commerce solutions at the E-commerce Expo."
+      ],
+      "market_position": "Challenger",
+      "regulatory_status": [
+        "GDPR Compliant",
+        "PCI DSS Certified"
+      ],
+      "social_sentiment": "Neutral"
+    }
+  },
+  "AeroDynamics": {
+    "internal": {
+      "industry": "Aerospace",
+      "products": [
+        {
+          "name": "AeroSim",
+          "description": "A flight simulation software for pilot training and aerospace research.",
+          "category": "Software",
+          "launch_year": 2020,
+          "revenue_contribution": "$7M annually"
+        },
+        {
+          "name": "JetStream",
+          "description": "High-performance aerospace components designed for efficiency.",
+          "category": "Hardware",
+          "launch_year": 2022,
+          "revenue_contribution": "$12M annually"
+        }
+      ],
+      "risk_category": "High",
+      "partnerships": [
+        {
+          "partner_name": "FlightTech",
+          "relationship_type": "Technology Development",
+          "start_year": 2021,
+          "details": "Jointly developing advanced aerospace technologies."
+        }
+      ],
+      "notes": "AeroDynamics is facing regulatory challenges in the aerospace industry. Leadership is focused on innovation while ensuring compliance with aviation standards.",
+      "methodologies": [
+        "Agile",
+        "Waterfall"
+      ],
+      "kpis": [
+        "Customer Retention 75%",
+        "Market Share 5%",
+        "EBITDA 10%"
+      ],
+      "client_profiles": [
+        "Defense Contractors",
+        "Commercial Airlines"
+      ],
+      "financial_estimates": "$25M ARR",
+      "expertise_areas": [
+        "Aerospace Engineering",
+        "Simulation Technologies"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "SkyPilot",
+          "description": "An immersive virtual reality training program for pilots.",
+          "category": "Service",
+          "launch_year": 2023
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "SkyTech",
+          "relationship_type": "Strategic Partnership",
+          "start_year": 2022,
+          "details": "Partnering on next-gen aerospace technologies."
+        }
+      ],
+      "website": "www.aerodynamics.com",
+      "description": "AeroDynamics is a leader in aerospace technology, committed to innovation and excellence in every aspect of flight.",
+      "recent_news": [
+        "Launched SkyPilot for advanced pilot training.",
+        "Secured partnership with FlightTech for technology development.",
+        "Awarded contract for aerospace research project by government."
+      ],
+      "market_position": "Niche Player",
+      "regulatory_status": [
+        "FAA Approved",
+        "ISO 9001"
+      ],
+      "social_sentiment": "Mixed"
+    }
+  },
+  "Cortex": {
+    "internal": {
+      "industry": "Consulting",
+      "products": [
+        {
+          "name": "CortexInsights",
+          "description": "Business intelligence software providing deep analytics for decision-making.",
+          "category": "Software",
+          "launch_year": 2022,
+          "revenue_contribution": "$3M annually"
+        },
+        {
+          "name": "StrategicAdvisory",
+          "description": "Consulting services focused on operational efficiency and growth strategies.",
+          "category": "Consulting",
+          "launch_year": 2023,
+          "revenue_contribution": "$4M annually"
+        }
+      ],
+      "risk_category": "Medium",
+      "partnerships": [
+        {
+          "partner_name": "DataSmart",
+          "relationship_type": "Data Collaboration",
+          "start_year": 2021,
+          "details": "Enhancing data-driven decision-making capabilities for clients."
+        }
+      ],
+      "notes": "Cortex is rapidly expanding its service offerings but needs to invest in brand recognition. The focus is on delivering high-quality insights to clients.",
+      "methodologies": [
+        "Design Thinking",
+        "Agile"
+      ],
+      "kpis": [
+        "Customer Retention 88%",
+        "Market Share 7%",
+        "EBITDA 12%"
+      ],
+      "client_profiles": [
+        "Mid-market B2B",
+        "Enterprise Fortune 500"
+      ],
+      "financial_estimates": "$20M ARR",
+      "expertise_areas": [
+        "Business Strategy",
+        "Data Analytics"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "InsightHub",
+          "description": "A user-friendly platform for accessing business intelligence tools.",
+          "category": "App",
+          "launch_year": 2023
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "InsightPartners",
+          "relationship_type": "Consulting Alliance",
+          "start_year": 2022,
+          "details": "Working together on strategic consulting projects."
+        }
+      ],
+      "website": "www.cortexconsulting.com",
+      "description": "Cortex is dedicated to delivering actionable insights and strategic guidance to help businesses thrive in a competitive landscape.",
+      "recent_news": [
+        "Launched InsightHub for enhanced data accessibility.",
+        "Secured collaboration with DataSmart for improved analytics.",
+        "Recognized as a top consulting firm by Business Insights Magazine."
+      ],
+      "market_position": "Challenger",
+      "regulatory_status": [
+        "ISO 9001",
+        "GDPR Compliant"
+      ],
+      "social_sentiment": "Positive"
+    }
+  },
+  "Digisolve": {
+    "internal": {
+      "industry": "Technology",
+      "products": [
+        {
+          "name": "CloudMatrix",
+          "description": "A robust cloud service for enterprise data management and analytics.",
+          "category": "Software",
+          "launch_year": 2021,
+          "revenue_contribution": "$15M annually"
+        },
+        {
+          "name": "AI-Engine",
+          "description": "Machine learning models designed for predictive analytics in business applications.",
+          "category": "Software",
+          "launch_year": 2022,
+          "revenue_contribution": "$8M annually"
+        }
+      ],
+      "risk_category": "Medium",
+      "partnerships": [
+        {
+          "partner_name": "TechPartners",
+          "relationship_type": "Strategic Alliance",
+          "start_year": 2020,
+          "details": "Collaborating on developing next-gen data solutions."
+        }
+      ],
+      "notes": "Digisolve is focusing on scalability in the cloud space. There are concerns about data privacy but ongoing investments in compliance frameworks are addressing these issues.",
+      "methodologies": [
+        "Agile",
+        "DevOps"
+      ],
+      "kpis": [
+        "Customer Retention 90%",
+        "Market Share 11%",
+        "EBITDA 20%"
+      ],
+      "client_profiles": [
+        "Enterprise Fortune 500",
+        "Mid-market B2B"
+      ],
+      "financial_estimates": "$55M ARR",
+      "expertise_areas": [
+        "Cloud Computing",
+        "Data Analytics"
+      ]
+    },
+    "external": {
+      "public_products": [
+        {
+          "name": "DataGuard",
+          "description": "An advanced security solution for protecting enterprise data in the cloud.",
+          "category": "Service",
+          "launch_year": 2023
+        }
+      ],
+      "partnerships": [
+        {
+          "partner_name": "CyberSecure",
+          "relationship_type": "Security Collaboration",
+          "start_year": 2022,
+          "details": "Working together on data protection solutions."
+        }
+      ],
+      "website": "www.digisolve.com",
+      "description": "Digisolve empowers businesses with cutting-edge technology solutions that drive efficiency and innovation.",
+      "recent_news": [
+        "Launched DataGuard to enhance cloud security.",
+        "Expanded partnership with TechPartners for cloud solutions.",
+        "Recognized as a leader in cloud technology by Tech Review."
+      ],
+      "market_position": "Market Leader",
+      "regulatory_status": [
+        "ISO 27001",
+        "SOC 2"
+      ],
+      "social_sentiment": "Positive"
+    }
+  }
 }

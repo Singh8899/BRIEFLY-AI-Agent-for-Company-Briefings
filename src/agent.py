@@ -55,19 +55,19 @@ def run_agent_query(query: str):
 
 # Test the agent with various queries
 if __name__ == "__main__":
-    print("=== Company A Information ===")
-    print(run_agent_query("Get company information for Company A"))
+    print("=== Energix Information ===")
+    print(run_agent_query("Get company information for Energix"))
     
-    print("\n=== Company B Search ===")
-    print(run_agent_query("Search for Company B"))
+    # print("\n=== Company B Search ===")
+    # print(run_agent_query("Search for Company B"))
     
-    print("\n=== Translation ===")
-    print(run_agent_query("Translate 'Berlin' to Portuguese"))
+    # print("\n=== Translation ===")
+    # print(run_agent_query("Translate 'Berlin' to Portuguese"))
     
-    print("\n=== Document Generation ===")
-    print(run_agent_query("Generate a document for Company A"))
+    # print("\n=== Document Generation ===")
+    # print(run_agent_query("Generate a document for Company A"))
     
-    print("\n=== Security Check ===")
-    print(run_agent_query("Check security for Company B"))
+    # print("\n=== Security Check ===")
+    # print(run_agent_query("Check security for Company B"))
 
 

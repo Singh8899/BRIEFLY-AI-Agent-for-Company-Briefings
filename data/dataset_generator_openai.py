@@ -1,6 +1,7 @@
 """"Generate synthetic company profile data using OpenAI"""
 import os
 import argparse
+import json
 
 from openai import OpenAI
 from dotenv import load_dotenv, find_dotenv
@@ -19,7 +20,19 @@ class dataset_generator_openai:
             base_url=os.getenv("OPENAI_BASE_URL")
         )
 
-    def generate_company_data(self, num_companies: int) -> CompanyProfiles:
+
+    def _to_company_dict(self, payload):
+        # payload is the CompanyProfiles model returned by OpenAI
+        out = {}
+        for c in payload.companies:
+            name = c.name
+            out[name] = {
+                "internal": c.internal.model_dump(),
+                "external": c.external.model_dump(),
+            }
+        return out
+
+    def generate_company_data(self, num_companies: int) -> dict:
         """Generate a synthetic company profile"""
 
         messages = [
@@ -37,7 +50,7 @@ class dataset_generator_openai:
             text_format=CompanyProfiles
         )
 
-        return response.output_parsed
+        return self._to_company_dict(response.output_parsed)
 
 def main():
     """Main function to generate and print synthetic company profiles"""
@@ -60,10 +73,8 @@ def main():
 
     output_file = args.output if args.output else f"company_database.json"
 
-    serializable_profiles = company_profiles.model_dump_json(indent=2)
-
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write(serializable_profiles)
+        json.dump(company_profiles, f, indent=2, ensure_ascii=False)
 
     print(f"Saved profiles to {output_file}")
 

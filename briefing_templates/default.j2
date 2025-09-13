@@ -1,0 +1,59 @@
+# Company Briefing: {{ company.name or "Unknown Company" }}
+
+**Industry:** {{ company.industry or "N/A" }}  
+**Headquarters:** {{ company.headquarters or "N/A" }}  
+{% if company.founded %}**Founded:** {{ company.founded }}{% endif %}  
+{% if company.ceo %}**CEO:** {{ company.ceo }}{% endif %}  
+{% if metadata.generated_at %}**Generated At:** {{ metadata.generated_at }}{% endif %}
+
+---
+
+## Overview
+{{ overview or "No overview available." }}
+
+{% if history %}
+## History
+{{ history }}
+{% endif %}
+
+## Key Products & Services
+{% if products and products|length > 0 %}
+{% for p in products %}
+- **{{ p.name }}** — {{ p.description or "No description available." }}
+{% endfor %}
+{% else %}
+- No product information available.
+{% endif %}
+
+## Partnerships & Recent News
+{% if partnerships and partnerships|length > 0 %}
+{% for part in partnerships %}
+- **{{ part.title }}** — {{ part.summary or "No details." }}  
+  _Source: {{ part.source or "Unknown" }}_
+{% endfor %}
+{% else %}
+- No partnerships or news found.
+{% endif %}
+
+## Financial Snapshot
+- **Revenue:** {{ financials.revenue or "N/A" }}  
+- **Market Cap:** {{ financials.market_cap or "N/A" }}  
+- **Employees:** {{ financials.employees or "N/A" }}
+
+## Risks & Sensitivities
+{% if risks and risks|length > 0 %}
+{% for r in risks %}
+- {{ r }}
+{% endfor %}
+{% else %}
+- None identified.
+{% endif %}
+
+## Sources
+{% if citations and citations|length > 0 %}
+{% for c in citations %}
+- [{{ c.title }}]({{ c.url }})
+{% endfor %}
+{% else %}
+- No sources cited.
+{% endif %}
