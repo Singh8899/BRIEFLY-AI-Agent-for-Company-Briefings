@@ -1,8 +1,9 @@
+""""Utility functions for the agent"""
 import ast
 import json
 import re
 
-from template_content import Content
+from .template_content import Content
 
 
 def parse_content(content_str: str):
@@ -10,7 +11,7 @@ def parse_content(content_str: str):
 
     if isinstance(content_str, str):
         content_str = content_str.strip()
-        
+
         try:
             # Try JSON first
             return json.loads(content_str)

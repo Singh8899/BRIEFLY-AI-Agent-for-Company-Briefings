@@ -1,5 +1,6 @@
 """Define custom tools for the agent"""
 
+import asyncio
 import json
 import os
 import re
@@ -12,10 +13,11 @@ from jinja2 import BaseLoader, Environment, StrictUndefined, TemplateError
 from langchain_core.tools import tool
 from pydantic import BaseModel, Field, ValidationError
 
-from agent_utils import parse_content
-from security_filter import generate_security_report
-from template_content import Content
+from .agent_utils import parse_content
+from .security_filter import generate_security_report
+from .template_content import Content
 
+_document_cache = {}
 
 def _load_company_data():
     """Load company database from JSON file"""
@@ -33,24 +35,24 @@ def _load_company_data():
 _companies_data = _load_company_data()
 
 
-
-class PresentInput(BaseModel):
-    briefing: str = Field(..., description="Final company briefing to return.")
-    meta: Dict[str, Any] = Field(default_factory=dict)
-
-@tool(args_schema=PresentInput, return_direct=True)
-def present_result(briefing: str, meta: Dict[str, Any]) -> str:
-    """Save the briefing to a .txt file (optional metadata can control location/name)
+@tool(return_direct=True)
+def present_result(document_id: str) -> str:
+    """Save the briefing to a .txt file
     Call this tool to present the final document to the user.
     🔴 THIS MUST BE THE LAST STEP - call this to complete the workflow.
+
+    Args:
+        document_id: The ID of the document to present
+
+    Returns:
+        return document_id
     """
 
-    output_dir = meta.get("output_dir") or os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs")
+    output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs")
     os.makedirs(output_dir, exist_ok=True)
 
-    raw_name = meta.get("file_name") or meta.get("company") or f"briefing-{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
     # sanitize filename
-    safe_name = re.sub(r'[^A-Za-z0-9._-]', '_', raw_name)
+    safe_name = re.sub(r'[^A-Za-z0-9._-]', '_', document_id)
     if not safe_name.lower().endswith(".txt"):
         safe_name = f"{safe_name}.txt"
 
@@ -58,11 +60,11 @@ def present_result(briefing: str, meta: Dict[str, Any]) -> str:
 
     try:
         with open(out_path, "w", encoding="utf-8") as fh:
-            fh.write(briefing)
+            fh.write(_document_cache[document_id])
         print(f"Briefing saved to: {out_path}")
     except Exception as e:
         print(f"Warning: failed to save briefing to {out_path}: {e}")
-    return briefing
+    return document_id
 
 @tool
 def list_available_companies() -> list:
@@ -99,30 +101,32 @@ def get_company_web_search(company_name: str) -> dict:
     return external_info
 
 @tool
-def translate_document(document: str, target_language: str) -> str:
+def translate_document(document_id: str, target_language: str) -> str:
     """Translate document to a target language if different from english.
     
     Args:
-        document: The document to translate
+        document_id: The ID of the document to check for security
         target_language: The target language for translation
         
     Returns:
-        Translated text
+        Translated document feedback
     """
     translator = Translator()
-    result = translator.translate(document, src='en', dest=target_language)
-    return result.text
+    raw = asyncio.run(translator.translate(_document_cache[document_id], src='en', dest=target_language))
+    _document_cache[document_id] = raw.text
+    
+    return "Document translated successfully and stored."
 
 @tool
 def generate_document(content: Union[Content, str, dict]) -> str:
-    """Create a structured briefing document.
+    """Create a structured briefing document and store it for processing
 
     Args:
         content: The content to include in the document
         should be a json serializable dict or Content model
 
     Returns:
-        Generated document content
+        feedback if the document was created successfully and the name of the document
     """
 
     # Handle case where content might be a JSON string instead of dict
@@ -174,26 +178,31 @@ def generate_document(content: Union[Content, str, dict]) -> str:
 
     document_md = "\n".join(lines)
 
-    return document_md
+    # Store the document with a session key
+    session_key = f"doc_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    _document_cache[session_key] = document_md
+    
+    # Return just a reference, not the full document
+    return f"Document generated successfully. Document ID: {session_key}"
 
 
 @tool
-def security_filter(company_name:str, document: str) -> str:
+def security_filter(company_name:str, document_id: str) -> str:
     """Return report on security vulnerabilities.
     
     Must use after generate_document and before translate_document.
 
     Args:
         company_name: The name of the company to check against
-        content: The content to check for security
-        
+        document_id: The ID of the document to check for security
+
     Returns:
         Security assessment result
     """
     _company_data = _companies_data.get(company_name, {})
     internal_info = _company_data.get("internal", {})
-
-    return generate_security_report(document, internal_info)
+    external_info = _company_data.get("external", {})
+    return generate_security_report(_document_cache[document_id], internal_info, external_info)
 
 
 # List of tools to be used by the agent

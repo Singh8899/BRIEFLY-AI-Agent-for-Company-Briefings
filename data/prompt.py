@@ -51,6 +51,9 @@ class ExternalInfo(BaseModel):
     market_position: Optional[str] = None  # competitive standing
     regulatory_status: Optional[List[str]] = None  # compliance, certifications
     social_sentiment: Optional[str] = None  # brand reputation indicator
+    number_of_employees: Optional[int] = None
+    ceo: Optional[str] = None
+    headquarters: Optional[str] = None
 
 
 class CompanyProfile(BaseModel):
