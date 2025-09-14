@@ -2,16 +2,19 @@
 
 import json
 import os
+import re
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, Union
 
-
-from jinja2 import Environment, BaseLoader, StrictUndefined, TemplateError
-from pydantic import ValidationError
-
-from langchain_core.tools import tool, InjectedToolArg
 from googletrans import Translator
+from jinja2 import BaseLoader, Environment, StrictUndefined, TemplateError
+from langchain_core.tools import tool
+from pydantic import BaseModel, Field, ValidationError
 
-from template_content import Content
+from agent_utils import parse_content
 from security_filter import generate_security_report
+from template_content import Content
 
 
 def _load_company_data():
@@ -31,13 +34,44 @@ _companies_data = _load_company_data()
 
 
 
+class PresentInput(BaseModel):
+    briefing: str = Field(..., description="Final company briefing to return.")
+    meta: Dict[str, Any] = Field(default_factory=dict)
+
+@tool(args_schema=PresentInput, return_direct=True)
+def present_result(briefing: str, meta: Dict[str, Any]) -> str:
+    """Save the briefing to a .txt file (optional metadata can control location/name)
+    Call this tool to present the final document to the user.
+    🔴 THIS MUST BE THE LAST STEP - call this to complete the workflow.
+    """
+
+    output_dir = meta.get("output_dir") or os.path.join(os.path.dirname(os.path.dirname(__file__)), "outputs")
+    os.makedirs(output_dir, exist_ok=True)
+
+    raw_name = meta.get("file_name") or meta.get("company") or f"briefing-{datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')}"
+    # sanitize filename
+    safe_name = re.sub(r'[^A-Za-z0-9._-]', '_', raw_name)
+    if not safe_name.lower().endswith(".txt"):
+        safe_name = f"{safe_name}.txt"
+
+    out_path = os.path.join(output_dir, safe_name)
+
+    try:
+        with open(out_path, "w", encoding="utf-8") as fh:
+            fh.write(briefing)
+        print(f"Briefing saved to: {out_path}")
+    except Exception as e:
+        print(f"Warning: failed to save briefing to {out_path}: {e}")
+    return briefing
+
 @tool
-def list_companies() -> list:
-    """List all companies in the database"""
+def list_available_companies() -> list:
+    """List all companies in the database
+    needed to check if a company exists before proceeding."""
     return list(_companies_data.keys())
 
 @tool
-def get_company_info(company_name: str) -> dict:
+def get_company_internal_info(company_name: str) -> dict:
     """Retrieve structured internal company data
     
     Args:
@@ -51,7 +85,7 @@ def get_company_info(company_name: str) -> dict:
     return internal_info
 
 @tool
-def web_search(company_name: str) -> dict:
+def get_company_web_search(company_name: str) -> dict:
     """Retrieve public info about products and partnerships
     
     Args:
@@ -65,8 +99,8 @@ def web_search(company_name: str) -> dict:
     return external_info
 
 @tool
-async def translate_document(document: str, target_language: str) -> str:
-    """Translate document to a target language.
+def translate_document(document: str, target_language: str) -> str:
+    """Translate document to a target language if different from english.
     
     Args:
         document: The document to translate
@@ -76,21 +110,29 @@ async def translate_document(document: str, target_language: str) -> str:
         Translated text
     """
     translator = Translator()
-    result = await translator.translate(document, src='en', dest=target_language)
+    result = translator.translate(document, src='en', dest=target_language)
     return result.text
 
 @tool
-def generate_document(content_dict: dict) -> str:
-    """Create a structured briefing document
-    
+def generate_document(content: Union[Content, str, dict]) -> str:
+    """Create a structured briefing document.
+
     Args:
-        content_dict: The content to include in the document
-        
+        content: The content to include in the document
+        should be a json serializable dict or Content model
+
     Returns:
         Generated document content
     """
+
+    # Handle case where content might be a JSON string instead of dict
+    content = parse_content(content)
+
     # Load the template
-    template_path = os.path.join("..","briefing_templates", "default.j2")
+    current_file = Path(__file__)
+    project_root = current_file.parent.parent
+    template_path = os.path.join(project_root, "briefing_templates", "default.j2")
+
     try:
         with open(template_path, "r", encoding="utf-8") as f:
             template = f.read()
@@ -101,7 +143,7 @@ def generate_document(content_dict: dict) -> str:
     # Validate & normalize inputs
     try:
         # Will coerce/validate types
-        content = Content.model_validate(content_dict)
+        content = Content.model_validate(content)
         # Convert back to plain dict for Jinja
         data = content.model_dump()
     except ValidationError as ve:
@@ -109,7 +151,7 @@ def generate_document(content_dict: dict) -> str:
         raise ValueError(f"content_dict failed validation: {ve}") from ve
     except Exception:
         # fall back to the raw dict
-        data = content_dict
+        data = content
 
     # Prepare Jinja environment
     env = Environment(
@@ -139,6 +181,8 @@ def generate_document(content_dict: dict) -> str:
 def security_filter(company_name:str, document: str) -> str:
     """Return report on security vulnerabilities.
     
+    Must use after generate_document and before translate_document.
+
     Args:
         company_name: The name of the company to check against
         content: The content to check for security
@@ -151,30 +195,14 @@ def security_filter(company_name:str, document: str) -> str:
 
     return generate_security_report(document, internal_info)
 
-@tool
-def document_format() -> dict:
-    """Return the required data structure format for document generation.
-    
-    This tool provides the schema that defines how data should be structured
-    when calling the generate_document tool. Use this to understand the
-    expected format before gathering and organizing company information.
-
-    Returns:
-        dict: JSON schema defining the required data structure for documents
-    """
-    
-    return Content.model_dump_schema()
-
-
-
 
 # List of tools to be used by the agent
 tools = [
-    list_companies,
-    get_company_info,
-    web_search,
-    document_format,
+    list_available_companies,
+    get_company_internal_info,
+    get_company_web_search,
     security_filter,
     generate_document,
-    translate_document
+    translate_document,
+    present_result
 ]

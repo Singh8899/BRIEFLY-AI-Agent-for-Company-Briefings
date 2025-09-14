@@ -1,13 +1,12 @@
 """"Generate synthetic company profile data using OpenAI"""
-import os
 import argparse
 import json
+import os
 
+from dotenv import find_dotenv, load_dotenv
 from openai import OpenAI
-from dotenv import load_dotenv, find_dotenv
 
-from prompt import get_system_prompt_data, CompanyProfiles
-
+from prompt import CompanyProfiles, get_system_prompt_data
 
 load_dotenv(find_dotenv())
 

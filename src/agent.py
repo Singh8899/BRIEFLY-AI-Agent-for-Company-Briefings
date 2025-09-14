@@ -2,14 +2,13 @@
 
 import os
 
-from langgraph.prebuilt import create_react_agent
-from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
+from dotenv import find_dotenv, load_dotenv
 from langchain_core.messages import HumanMessage
-from dotenv import load_dotenv, find_dotenv
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
+from langgraph.prebuilt import create_react_agent
 
-from tools import tools
 from prompt import prompt
-
+from tools import tools
 
 # Load environment variables from .env file
 load_dotenv(find_dotenv())
@@ -52,22 +51,3 @@ def run_agent_query(query: str):
             if hasattr(msg, 'content') and msg.content and 'Company' in str(msg.content):
                 result_messages.append(str(msg.content))
         return '\n'.join(result_messages) if result_messages else "No response generated"
-
-# Test the agent with various queries
-if __name__ == "__main__":
-    print("=== Energix Information ===")
-    print(run_agent_query("Get company information for Energix"))
-    
-    # print("\n=== Company B Search ===")
-    # print(run_agent_query("Search for Company B"))
-    
-    # print("\n=== Translation ===")
-    # print(run_agent_query("Translate 'Berlin' to Portuguese"))
-    
-    # print("\n=== Document Generation ===")
-    # print(run_agent_query("Generate a document for Company A"))
-    
-    # print("\n=== Security Check ===")
-    # print(run_agent_query("Check security for Company B"))
-
-

@@ -1,7 +1,9 @@
 """System prompt for the synthetic dataset generator"""
 
 from typing import List, Optional
+
 from pydantic import BaseModel
+
 
 class InternalProduct(BaseModel):
     name: str
