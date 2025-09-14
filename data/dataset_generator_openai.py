@@ -10,10 +10,10 @@ from prompt import CompanyProfiles, get_system_prompt_data
 
 load_dotenv(find_dotenv())
 
-class dataset_generator_openai:
+class datasetGeneratorOpenAI:
     """Generate synthetic company profile data using OpenAI"""
     def __init__(self):
-        
+
         self.openai_client = OpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
             base_url=os.getenv("OPENAI_BASE_URL")
@@ -67,7 +67,7 @@ def main():
     )
     args = parser.parse_args()
 
-    generator = dataset_generator_openai()
+    generator = datasetGeneratorOpenAI()
     company_profiles = generator.generate_company_data(num_companies=args.count)
 
     output_file = args.output if args.output else f"company_database.json"

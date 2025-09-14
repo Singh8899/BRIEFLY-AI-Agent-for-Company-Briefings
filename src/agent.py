@@ -8,8 +8,8 @@ from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from langgraph.prebuilt import create_react_agent
 
 from .prompt import PROMPT
+from .security_filter import OutputValidator, PromptInjectionFilter
 from .tools import tools
-from .security_filter import PromptInjectionFilter, OutputValidator
 
 # Load environment variables from .env file
 load_dotenv(find_dotenv())
@@ -20,7 +20,7 @@ llm = HuggingFaceEndpoint(
     huggingfacehub_api_token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
     temperature=float(os.getenv("LLM_TEMPERATURE", 0.7)),
     top_p=float(os.getenv("LLM_TOP_P", 0.9)),
-    provider="nebius"
+    provider=os.getenv("HUGGINGFACE_PROVIDER", "nebius"),
 )
 
 # Initialize the prompt injection filter

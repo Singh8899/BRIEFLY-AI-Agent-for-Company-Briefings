@@ -1,6 +1,6 @@
 import argparse
-from src.agent import run_agent_query
 
+from src.agent import run_agent_query
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run agent queries")
