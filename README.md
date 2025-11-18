@@ -1,4 +1,4 @@
-# Research Assistant Chatbot
+# BRIEFLY: AI Agent for Company Briefings
 
 An intelligent AI-powered research assistant that provides detailed company briefings and analysis using advanced language models and custom tools. The chatbot can analyze companies, provide insights on products, partnerships, and recent developments.
 
